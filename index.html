@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ru" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивное Коммерческое Предложение: AI-Финансовый директор на аутсорс</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            card: '#1e293b',
+                            accent: '#10b981',
+                            primary: '#6366f1'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-header {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(12px);
+        }
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-full flex flex-col antialiased">
+
+    <!-- Header / Top Bar (Exact format matched to brand style) -->
+    <header class="border-b border-slate-800 glass-header sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <!-- Brand Logo matching reference image -->
+                <div class="flex items-center space-x-2.5">
+                    <div class="px-3 py-1.5 rounded-lg bg-gradient-to-r from-cyan-400 to-indigo-600 shadow-md flex items-center justify-center">
+                        <span class="text-slate-950 font-extrabold text-sm tracking-tight">CFO</span>
+                    </div>
+                    <span class="text-xl font-extrabold tracking-tight text-white">FinAI</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:flex items-center space-x-2 bg-slate-900/90 px-3 py-1.5 rounded-full border border-slate-800">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span class="text-xs font-medium text-emerald-300">AI-Эксперт активен</span>
+                </div>
+                <!-- Точная надпись в правом верхнем углу -->
+                <div class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-700/80 text-sm font-semibold text-white shadow-md backdrop-blur-sm">
+                    CFOAI - Павлова Людмила
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+        <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:20px_20px]"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-xs font-semibold mb-6">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Управленческая революция для вашего бизнеса</span>
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
+                AI-Финдиректор: <span class="bg-gradient-to-r from-indigo-400 to-emerald-400 bg-clip-text text-transparent">от хаоса в таблицах до прозрачных дашбордов</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 font-normal">
+                Внедрите гибридную систему финансового управления: сила искусственного интеллекта + глубокая экспертиза CFO на аутсорсе. Узнайте точную стоимость автоматизации вашей отчетности за 1 минуту.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button onclick="scrollToCalculator()" class="px-8 py-4 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 text-white font-semibold shadow-xl shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:from-indigo-500 hover:to-indigo-400 transition transform active:scale-95 flex items-center justify-center space-x-3">
+                    <span>Собрать решение и узнать цену</span>
+                    <i class="fa-solid fa-arrow-down"></i>
+                </button>
+                <button onclick="openModal('auditModal')" class="px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold border border-slate-800 transition flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-comments text-emerald-400"></i>
+                    <span>Запросить консультацию финдиректора</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Configurator Section -->
+    <section id="calculatorSection" class="py-16 bg-slate-950 flex-grow">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-3">Интерактивный конструктор услуг и дашбордов</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-sm">Выберите источник ваших данных и настройте необходимые дополнительные модули под задачи вашей компании.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Left & Middle: Options -->
+                <div class="lg:col-span-2 space-y-6">
+                    
+                    <!-- Step 1: Data Source Base -->
+                    <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm">1</span>
+                            <h3 class="text-lg font-semibold text-white">Выберите базовый источник данных</h3>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Option A: Excel -->
+                            <label class="relative flex flex-col p-5 rounded-xl border-2 cursor-pointer transition bg-slate-950/60 hover:bg-slate-950 border-slate-800 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-950/20 group">
+                                <input type="radio" name="dataSource" value="100000" onchange="updateCalculation()" class="sr-only" checked>
+                                <div class="flex justify-between items-start mb-3">
+                                    <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl">
+                                        <i class="fa-solid fa-file-excel"></i>
+                                    </div>
+                                    <span class="text-emerald-400 font-bold text-lg">100 000 ₽</span>
+                                </div>
+                                <span class="font-semibold text-white group-hover:text-indigo-300 transition mb-1">Excel-файлы (3 отчета)</span>
+                                <p class="text-xs text-slate-400 mt-auto">Подготовка дашборда на основе трех ключевых финансовых отчетов (P&L, Cash Flow, Баланс).</p>
+                                <div class="absolute top-4 right-4 w-5 h-5 rounded-full border border-slate-700 flex items-center justify-center group-has-[:checked]:border-indigo-500 group-has-[:checked]:bg-indigo-500">
+                                    <i class="fa-solid fa-check text-white text-xs opacity-0 group-has-[:checked]:opacity-100"></i>
+                                </div>
+                            </label>
+
+                            <!-- Option B: 1C -->
+                            <label class="relative flex flex-col p-5 rounded-xl border-2 cursor-pointer transition bg-slate-950/60 hover:bg-slate-950 border-slate-800 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-950/20 group">
+                                <input type="radio" name="dataSource" value="200000" onchange="updateCalculation()" class="sr-only">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl">
+                                        <i class="fa-solid fa-database"></i>
+                                    </div>
+                                    <span class="text-blue-400 font-bold text-lg">200 000 ₽</span>
+                                </div>
+                                <span class="font-semibold text-white group-hover:text-indigo-300 transition mb-1">Выгрузка данных 1С (УНФ)</span>
+                                <p class="text-xs text-slate-400 mt-auto">Дашборд по финотчетам из выгрузки 1С с учетом настройки параметров и доп.модулей.</p>
+                                <div class="absolute top-4 right-4 w-5 h-5 rounded-full border border-slate-700 flex items-center justify-center group-has-[:checked]:border-indigo-500 group-has-[:checked]:bg-indigo-500">
+                                    <i class="fa-solid fa-check text-white text-xs opacity-0 group-has-[:checked]:opacity-100"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Additional Services / Modules -->
+                    <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm">2</span>
+                            <h3 class="text-lg font-semibold text-white">Дополнительные модули и параметры</h3>
+                        </div>
+
+                        <div class="space-y-3">
+                            <!-- Addon 1 -->
+                            <label class="flex items-center justify-between p-4 rounded-xl bg-slate-950/60 border border-slate-800/80 hover:border-slate-700 cursor-pointer transition">
+                                <div class="flex items-center space-x-3">
+                                    <input type="checkbox" value="25000" onchange="updateCalculation()" class="addon-checkbox w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 bg-slate-900 border-slate-700">
+                                    <div>
+                                        <span class="text-sm font-medium text-white block">Платежный календарь</span>
+                                        <span class="text-xs text-slate-400">Контроль кассовых разрывов и графиков платежей</span>
+                                    </div>
+                                </div>
+                                <span class="text-sm font-semibold text-indigo-400">+25 000 ₽</span>
+                            </label>
+
+                            <!-- Addon 2 -->
+                            <label class="flex items-center justify-between p-4 rounded-xl bg-slate-950/60 border border-slate-800/80 hover:border-slate-700 cursor-pointer transition">
+                                <div class="flex items-center space-x-3">
+                                    <input type="checkbox" value="30000" onchange="updateCalculation()" class="addon-checkbox w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 bg-slate-900 border-slate-700">
+                                    <div>
+                                        <span class="text-sm font-medium text-white block">Финансовый цикл и оборачиваемость</span>
+                                        <span class="text-xs text-slate-400">Анализ дебиторки, кредиторки и запасов в динамике</span>
+                                    </div>
+                                </div>
+                                <span class="text-sm font-semibold text-indigo-400">+30 000 ₽</span>
+                            </label>
+
+                            <!-- Addon 3 -->
+                            <label class="flex items-center justify-between p-4 rounded-xl bg-slate-950/60 border border-slate-800/80 hover:border-slate-700 cursor-pointer transition">
+                                <div class="flex items-center space-x-3">
+                                    <input type="checkbox" value="40000" onchange="updateCalculation()" class="addon-checkbox w-5 h-5 rounded text-indigo-600 focus:ring-indigo-500 bg-slate-900 border-slate-700">
+                                    <div>
+                                        <span class="text-sm font-medium text-white block">AI-Прогнозирование выручки и юнит-экономики</span>
+                                        <span class="text-xs text-slate-400">Использование нейросетей для сценарного моделирования</span>
+                                    </div>
+                                </div>
+                                <span class="text-sm font-semibold text-indigo-400">+40 000 ₽</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Full Accounting Build / Custom -->
+                    <div class="bg-gradient-to-r from-indigo-950/50 to-purple-950/50 border border-indigo-500/30 rounded-2xl p-6 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <span class="text-xs font-semibold text-indigo-400 uppercase tracking-wider block mb-1">Комплексный формат</span>
+                            <h4 class="text-lg font-bold text-white mb-1">Управленческая отчётность от нуля до дашборда</h4>
+                            <p class="text-xs text-slate-300">Полный аудит учета, настройка регламентов, сборка базы и дашбордов под ключ с личным AI-Финдиректором.</p>
+                        </div>
+                        <button onclick="openModal('customModal')" class="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm whitespace-nowrap shadow-lg shadow-indigo-600/30 transition">
+                            Обсудить условия
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Summary Card & AI Advisor Commentary -->
+                <div class="space-y-6">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl sticky top-28">
+                        <h3 class="text-lg font-bold text-white mb-4 pb-3 border-b border-slate-800 flex items-center justify-between">
+                            <span>Ваша смета</span>
+                            <i class="fa-solid fa-receipt text-indigo-400"></i>
+                        </h3>
+
+                        <div class="space-y-3 mb-6 text-sm">
+                            <div class="flex justify-between text-slate-300">
+                                <span id="baseServiceTitle">Дашборд из Excel (3 отчета)</span>
+                                <span id="baseServicePrice" class="font-semibold text-white">100 000 ₽</span>
+                            </div>
+                            <div id="addonsSummaryList" class="space-y-1 text-xs text-slate-400 pl-2">
+                                <!-- Dynamic addons -->
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-800 mb-6">
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-sm text-slate-400">Итого инвестиции:</span>
+                                <span id="totalPrice" class="text-3xl font-extrabold text-emerald-400">100 000 ₽</span>
+                            </div>
+                            <span class="text-[11px] text-slate-500 block text-right mt-1">* Без скрытых платежей, запуск от 5 рабочих дней</span>
+                        </div>
+
+                        <button onclick="openModal('orderModal')" class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-slate-950 font-bold shadow-lg shadow-emerald-500/20 hover:from-emerald-400 hover:to-emerald-500 transition mb-3 flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Заказать внедрение</span>
+                        </button>
+
+                        <div class="bg-slate-950/80 rounded-xl p-4 border border-slate-800 mt-4">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs">
+                                    <i class="fa-solid fa-robot"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-emerald-300">Комментарий AI-Эксперта</span>
+                            </div>
+                            <p id="aiComment" class="text-xs text-slate-300 leading-relaxed">
+                                Отличный выбор базы из Excel! Это самый быстрый старт для наведения порядка в ключевых метриках P&L и Cash Flow без сложных интеграций.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why AI CFO Section -->
+    <section class="py-16 bg-slate-950 border-t border-slate-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-3">Почему аутсорс AI-Финдиректора выгоднее штатного?</h2>
+                <p class="text-slate-400 max-w-xl mx-auto text-sm">Современные технологии искусственного интеллекта автоматизируют рутину, а эксперт принимает стратегические решения.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-base font-semibold text-white mb-2">Скорость аналитики 24/7</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Дашборды обновляются в режиме реального времени, а AI мгновенно находит аномалии в расходах и падение маржинальности.</p>
+                </div>
+
+                <div class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-piggy-bank"></i>
+                    </div>
+                    <h3 class="text-base font-semibold text-white mb-2">Экономия до 70% бюджета</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Вы получаете компетенции финансового директора топ-уровня по цене в разы ниже зарплаты штатного специалиста.</p>
+                </div>
+
+                <div class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <h3 class="text-base font-semibold text-white mb-2">Никаких кассовых разрывов</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Интегрированные платежные календари и расчет финансового цикла защищают компанию от нехватки ликвидности.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI & Financial Payback Section -->
+    <section class="py-16 bg-gradient-to-b from-slate-950 to-slate-900 border-t border-slate-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-semibold mb-4">
+                    <i class="fa-solid fa-calculator"></i>
+                    <span>Экономический эффект</span>
+                </span>
+                <h2 class="text-3xl font-bold text-white mb-3">Окупаемость внедрения дашбордов и управленческой отчётности</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-sm">Цифры говорят сами за себя: как инвестиции в финансовую прозрачность возвращаются бизнесу уже в первые месяцы.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <!-- Card 1 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 relative overflow-hidden group hover:border-emerald-500/50 transition">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-2xl group-hover:bg-emerald-500/10 transition"></div>
+                    <div class="text-emerald-400 font-extrabold text-3xl mb-2">от 3 до 5 раз</div>
+                    <h3 class="text-base font-semibold text-white mb-2">Рост маржинальности пула заказов</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">Благодаря своевременному выявлению нерентабельных продуктов и клиентов через дашборд P&L.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 relative overflow-hidden group hover:border-indigo-500/50 transition">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-2xl group-hover:bg-indigo-500/10 transition"></div>
+                    <div class="text-indigo-400 font-extrabold text-3xl mb-2">100%</div>
+                    <h3 class="text-base font-semibold text-white mb-2">Исключение кассовых разрывов</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">Внедрение платежного календаря и контроля финансового цикла на 100% предотвращает внезапную нехватку денег на счетах.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 relative overflow-hidden group hover:border-purple-500/50 transition">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-2xl group-hover:bg-purple-500/10 transition"></div>
+                    <div class="text-purple-400 font-extrabold text-3xl mb-2">за 1–2 месяца</div>
+                    <h3 class="text-base font-semibold text-white mb-2">Полный срок возврата инвестиций (ROI)</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">Затраты на покупку и настройку дашбордов (от 100 000 ₽) окупаются за счет оптимизации расходов и сэкономленного времени команды.</p>
+                </div>
+            </div>
+
+            <!-- Financial Director AI Insight Box -->
+            <div class="bg-gradient-to-r from-indigo-950/40 via-slate-900 to-emerald-950/40 border border-indigo-500/30 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div class="flex items-start space-x-4">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl shrink-0 mt-1">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-base font-bold text-white mb-1">Мнение эксперта: почему дашборд окупается быстрее, чем «ручной» учет?</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed max-w-2xl">
+                            Когда собственник видит ключевые метрики в режиме реального времени на одном экране, скорость принятия управленческих решений возрастает в 5 раз. Вы перестаете управлять «вслепую» по остаткам на счете и начинаете оперировать маржой, EBITDA и оборачиваемостью.
+                        </p>
+                    </div>
+                </div>
+                <button onclick="scrollToCalculator()" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs whitespace-nowrap shadow-lg shadow-emerald-500/20 transition">
+                    Рассчитать свой проект
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 py-8 border-t border-slate-900 text-center text-xs text-slate-500">
+        <p>© 2026 AI CFO Intelligence. Все права защищены. Инновационный консалтинг и финансовый аутсорс.</p>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Order Modal -->
+    <div id="orderModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="closeModal('orderModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <h3 class="text-xl font-bold text-white mb-2">Оформление заказа</h3>
+            <p class="text-xs text-slate-400 mb-6">Заполните контактные данные, и мы свяжемся с вами для старта проекта по выбранной конфигурации.</p>
+            <form onsubmit="handleFormSubmit(event, 'orderModal')" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Ваше имя</label>
+                    <input type="text" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500" placeholder="Иван">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Номер телефона или Telegram</label>
+                    <input type="text" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500" placeholder="+7 (999) 000-00-00">
+                </div>
+                <button type="submit" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition shadow-lg shadow-indigo-600/30">
+                    Подтвердить заявку
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Audit / Custom Modals -->
+    <div id="auditModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="closeModal('auditModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <h3 class="text-xl font-bold text-white mb-2">Запрос консультации финдиректора</h3>
+            <p class="text-xs text-slate-400 mb-6">Расскажите о текущем состоянии вашего учета, и наш эксперт предложит оптимальную архитектуру отчетности.</p>
+            <form onsubmit="handleFormSubmit(event, 'auditModal')" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Ваше имя и компания</label>
+                    <input type="text" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500" placeholder="ООО «Ромашка», Иван">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Телефон / Мессенджер</label>
+                    <input type="text" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500" placeholder="@telegram или телефон">
+                </div>
+                <button type="submit" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition shadow-lg shadow-indigo-600/30">
+                    Получить консультацию
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="customModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="closeModal('customModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            <h3 class="text-xl font-bold text-white mb-2">Управленческая отчетность с нуля</h3>
+            <p class="text-xs text-slate-400 mb-6">Этот формат рассчитывается индивидуально после экспресс-аудита вашей учетной системы.</p>
+            <form onsubmit="handleFormSubmit(event, 'customModal')" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Ваше имя</label>
+                    <input type="text" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500" placeholder="Иван">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Связь с вами</label>
+                    <input type="text" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500" placeholder="Телефон / Telegram">
+                </div>
+                <button type="submit" class="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition shadow-lg shadow-indigo-600/30">
+                    Запросить расчет индивидуально
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-emerald-600 text-white px-6 py-3 rounded-xl shadow-2xl transform translate-y-24 opacity-0 transition-all duration-300 z-50 flex items-center space-x-3">
+        <i class="fa-solid fa-circle-check text-lg"></i>
+        <span id="toastText" class="text-sm font-medium">Заявка успешно отправлена!</span>
+    </div>
+
+    <!-- JavaScript Controller -->
+    <script>
+        function scrollToCalculator() {
+            document.getElementById('calculatorSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function updateCalculation() {
+            // Get selected base source
+            const dataSourceRadio = document.querySelector('input[name="dataSource"]:checked');
+            let basePrice = parseInt(dataSourceRadio.value);
+            let baseTitle = basePrice === 100000 ? 'Дашборд из Excel (3 отчета)' : 'Дашборд из выгрузки 1С (УНФ)';
+            
+            document.getElementById('baseServiceTitle').innerText = baseTitle;
+            document.getElementById('baseServicePrice').innerText = basePrice.toLocaleString('ru-RU') + ' ₽';
+
+            // Get selected addons
+            const addonCheckboxes = document.querySelectorAll('.addon-checkbox:checked');
+            let addonsTotal = 0;
+            let addonsHtml = '';
+
+            addonCheckboxes.forEach(cb => {
+                const price = parseInt(cb.value);
+                addonsTotal += price;
+                const labelText = cb.closest('label').querySelector('span.text-white').innerText;
+                addonsHtml += `<div class="flex justify-between text-slate-400 pl-2"><span>+ ${labelText}</span><span>+ ${price.toLocaleString('ru-RU')} ₽</span></div>`;
+            });
+
+            document.getElementById('addonsSummaryList').innerHTML = addonsHtml;
+
+            let totalPrice = basePrice + addonsTotal;
+            document.getElementById('totalPrice').innerText = totalPrice.toLocaleString('ru-RU') + ' ₽';
+
+            // AI Advisor Dynamic Commentary
+            const aiCommentEl = document.getElementById('aiComment');
+            if (basePrice === 200000) {
+                aiCommentEl.innerText = "Интеграция с 1С (УНФ) обеспечивает автоматическую синхронизацию данных. Отличный выбор для масштабирования бизнеса и снижения человеческого фактора в учете.";
+            } else {
+                if (addonCheckboxes.length > 0) {
+                    aiCommentEl.innerText = "Отличная комбинация Excel-базы с дополнительными модулями. Вы получите полноценный контроль денежных потоков в короткие сроки.";
+                } else {
+                    aiCommentEl.innerText = "Базовый вариант из Excel идеален для старта быстрого финансового контроля без лишних затрат на интеграции.";
+                }
+            }
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        function handleFormSubmit(event, modalId) {
+            event.preventDefault();
+            closeModal(modalId);
+            
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 4000);
+        }
+
+        // Initialize calculation on load
+        window.onload = function() {
+            updateCalculation();
+        }
+    </script>
+</body>
+</html>
